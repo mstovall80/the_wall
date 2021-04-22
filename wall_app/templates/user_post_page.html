@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="containor1 d-flex justify-content-between">
+        <h1>CodingDojoWall</h1>
+        <h2>welcome {{this_user.first_name}} {{this_user.last_name}}</h2>
+        <a href="/">Logoff</a>
+    </div>
+
+    <div class="containor2 mt-4">
+            <form action="/posted_message" method="POST">
+                {%csrf_token%}
+                <h2>Post message:</h2>
+                <input type="text" name="messages"  class="form-control">
+                <input type="submit" value="post a message" class="btn btn-primary" />
+            </form>
+    </div>
+
+    <div class="containor3">
+
+        <h1 class="/posted_message">
+            <strong>{{this_user.first_name }}{{this_user.last_name }}</strong>
+        </h1>
+        {% for posted_message in messages%}
+            <ul>
+                <li>
+                <em>
+                {{posted_message.message}}
+                {{posted_message.posted_message}}
+                </em>
+                </li>
+            </ul>
+        {%endfor%}
+    </div>
+
+</body>
+</html>
